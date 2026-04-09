@@ -16,6 +16,8 @@ import healthRoutes from './routes/healthRoutes';
 import chaosRoutes from './routes/chaosRoutes';
 import userRoutes from './routes/userRoutes';
 import projectRoutes from './routes/projectRoutes';
+import adminRoutes from './routes/adminRoutes';
+import fileRoutes from './routes/fileRoutes';
 
 // Load environment variables
 dotenv.config();
@@ -29,9 +31,12 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(helmet());
 app.use(compression());
+// VULNERABILITY: Overly permissive CORS configuration
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-  credentials: true,
+  origin: '*',  // Allows any origin
+  credentials: true,  // Combined with wildcard origin = security risk
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: '*',
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -44,6 +49,8 @@ app.use('/api/todos', todoRoutes);
 app.use('/api/chaos', chaosRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/projects', projectRoutes);
+app.use('/api/admin', adminRoutes);    // VULNERABILITY: No auth middleware
+app.use('/api/files', fileRoutes);     // VULNERABILITY: No auth middleware
 
 // Root endpoint
 app.get('/', (_req, res) => {
