@@ -1,3 +1,4 @@
+[![Board Status](https://dev.azure.com/paulasilvatech/bd6c388e-9d28-4a15-901c-9c8a80bd590d/659226c5-a558-4a65-85e2-b876d34b4913/_apis/work/boardbadge/540cf7b4-2028-4beb-a9ee-c66bf3f0a917)](https://dev.azure.com/paulasilvatech/bd6c388e-9d28-4a15-901c-9c8a80bd590d/_boards/board/t/659226c5-a558-4a65-85e2-b876d34b4913/Microsoft.RequirementCategory)
 # 🚀 Azure SRE Agent Demo - Full Stack Todo Platform
 
 A comprehensive demonstration platform showcasing Azure SRE Agent capabilities with intentional chaos scenarios, complete monitoring, and automated incident response.
